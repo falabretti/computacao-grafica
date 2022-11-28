@@ -4,6 +4,7 @@
 #include "CTimer.h"
 #include "CTexto.h"
 #include "CCamera.h"
+#include "CModel_3DS.h"
 
 
 
@@ -56,5 +57,9 @@ private:
 	float fRenderPosY;
 	float fTimerPosY;
 
+
+	CModel_3DS* pTerrain;
+	CModel_3DS* pFire;
+	CModel_3DS* pBrokenCar;
 };
 

@@ -30,6 +30,18 @@ CScene7::CScene7()
 	// Carrega todas as texturas
 	//pTextures = new CTexture();	
 
+
+	pTerrain = NULL;
+	pTerrain = new CModel_3DS();
+	pTerrain->Load("../Scene7/Objects/Terrain.3ds");
+
+	pFire = NULL;
+	pFire = new CModel_3DS();
+	pFire->Load("../Scene7/Objects/Fire.3ds");
+
+	pBrokenCar = NULL;
+	pBrokenCar = new CModel_3DS();
+	pBrokenCar->Load("../Scene7/Objects/BrokenCar.3ds");
 }
 
 
@@ -57,7 +69,25 @@ CScene7::~CScene7(void)
 	{
 		delete pTimer;
 		pTimer = NULL;
-	}	
+	}
+
+	if (pTerrain)
+	{
+		delete pTerrain;
+		pTerrain = NULL;
+	}
+
+	if (pFire)
+	{
+		delete pFire;
+		pFire = NULL;
+	}
+
+	if (pBrokenCar)
+	{
+		delete pBrokenCar;
+		pBrokenCar = NULL;
+	}
 }
 
 
@@ -101,10 +131,24 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
 
+	// Terrain
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
+	pTerrain->Draw();
+	glPopMatrix();
 
+	// Fire
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
+	pFire->Draw();
+	glPopMatrix();
 
-
-
+	// BrokenCar
+	glPushMatrix();
+	glTranslatef(-1.0f, 0.0f, -1.0f);
+	glRotatef(45.0f, 0.0f, 1.0f, 0.0f);
+	pBrokenCar->Draw();
+	glPopMatrix();
 
 
 
