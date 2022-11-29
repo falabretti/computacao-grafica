@@ -68,5 +68,12 @@ private:
 	CModel_3DS* pCar1;
 	CModel_3DS* pCar2;
 	CModel_3DS* pCar3;
+
+	// Boxes
+	CModel_3DS* pBoxes1;
+	CModel_3DS* pBoxes2;
+	CModel_3DS* pBoxes3;
+	CModel_3DS* pBoxes4;
+	CModel_3DS* pBoxes5;
 };
 

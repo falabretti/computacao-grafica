@@ -55,6 +55,28 @@ CScene7::CScene7()
 	pCar3 = NULL;
 	pCar3 = new CModel_3DS();
 	pCar3->Load("../Scene7/Objects/Car3.3ds");
+
+
+	// Boxes
+	pBoxes1 = NULL;
+	pBoxes1 = new CModel_3DS();
+	pBoxes1->Load("../Scene7/Objects/Boxes1.3ds");
+
+	pBoxes2 = NULL;
+	pBoxes2 = new CModel_3DS();
+	pBoxes2->Load("../Scene7/Objects/Boxes2.3ds");
+
+	pBoxes3 = NULL;
+	pBoxes3 = new CModel_3DS();
+	pBoxes3->Load("../Scene7/Objects/Boxes3.3ds");
+
+	pBoxes4 = NULL;
+	pBoxes4 = new CModel_3DS();
+	pBoxes4->Load("../Scene7/Objects/Boxes4.3ds");
+
+	pBoxes5 = NULL;
+	pBoxes5 = new CModel_3DS();
+	pBoxes5->Load("../Scene7/Objects/Boxes5.3ds");
 }
 
 
@@ -117,6 +139,38 @@ CScene7::~CScene7(void)
 	{
 		delete pCar3;
 		pCar3 = NULL;
+	}
+
+
+	// Boxes
+	if (pBoxes1)
+	{
+		delete pBoxes1;
+		pBoxes1 = NULL;
+	}
+
+	if (pBoxes2)
+	{
+		delete pBoxes2;
+		pBoxes2 = NULL;
+	}
+
+	if (pBoxes3)
+	{
+		delete pBoxes3;
+		pBoxes3 = NULL;
+	}
+
+	if (pBoxes4)
+	{
+		delete pBoxes4;
+		pBoxes4 = NULL;
+	}
+
+	if (pBoxes5)
+	{
+		delete pBoxes5;
+		pBoxes5 = NULL;
 	}
 }
 
@@ -191,6 +245,38 @@ int CScene7::DrawGLScene(void)	// Fun��o que desenha a cena
 	glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
 	pCar3->Draw();
 	glPopMatrix();
+
+
+	// Boxes1
+	glPushMatrix();
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	pBoxes1->Draw();
+	glPopMatrix();
+
+	// Boxes2
+	glPushMatrix();
+	glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
+	pBoxes2->Draw();
+	glPopMatrix();
+
+	// Boxes3
+	glPushMatrix();
+	glColor4f(0.0f, 1.0f, 1.0f, 1.0f);
+	pBoxes3->Draw();
+	glPopMatrix();
+
+	// Boxes4
+	glPushMatrix();
+	glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
+	pBoxes4->Draw();
+	glPopMatrix();
+
+	// Boxes5
+	glPushMatrix();
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	pBoxes5->Draw();
+	glPopMatrix();
+
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//                               DESENHA OS OBJETOS DA CENA (FIM)
