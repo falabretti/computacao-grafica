@@ -14,7 +14,7 @@ CScene7::CScene7()
 	ulLastFPS = 0;
 	szTitle[256] = 0;
 
-	// Cria gerenciador de impressï¿½o de texto na tela
+	// Cria gerenciador de impressão de texto na tela
 	pTexto = new CTexto();
 
 	// Cria camera
@@ -87,6 +87,12 @@ CScene7::CScene7()
 	pHouse2 = NULL;
 	pHouse2 = new CModel_3DS();
 	pHouse2->Load("../Scene7/Objects/House2.3ds");
+
+
+	// Trees
+	pTree1 = NULL;
+	pTree1 = new CModel_3DS();
+	pTree1->Load("../Scene7/Objects/Tree1.3ds");
 }
 
 
@@ -196,12 +202,20 @@ CScene7::~CScene7(void)
 		delete pHouse2;
 		pHouse2 = NULL;
 	}
+
+
+	// Trees
+	if (pTree1)
+	{
+		delete pTree1;
+		pTree1 = NULL;
+	}
 }
 
 
 
 
-int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
+int CScene7::DrawGLScene(void)	// Função que desenha a cena
 {
 	// Get FPS
 	if (GetTickCount() - ulLastFPS >= 1000)	// When A Second Has Passed...
@@ -218,7 +232,7 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	glLoadIdentity();									// Inicializa a Modelview Matrix Atual
 
 
-	// Seta as posiï¿½ï¿½es da cï¿½mera
+	// Seta as posições da câmera
 	pCamera->setView();
 
 	// Desenha grid 
@@ -227,16 +241,16 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	// Desenha os eixos do sistema cartesiano
 	DrawAxis();
 
-	// Modo FILL ou WIREFRAME (pressione barra de espaï¿½o)	
+	// Modo FILL ou WIREFRAME (pressione barra de espaço)	
 	if (bIsWireframe)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	else
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);	
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//                               DESENHA OS OBJETOS DA CENA (INï¿½CIO)
+	//                               DESENHA OS OBJETOS DA CENA (INÍCIO)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	
 
 	// Terrain
 	glPushMatrix();
@@ -315,15 +329,72 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	glPopMatrix();
 
 	
+	// Tree1
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(9.5f, 0.0f, -2.6f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree2
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-3.5f, 0.0f, -26.6f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree3
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-7.9f, 0.0f, -26.7f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree4
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-9.0f, 0.0f, -10.9f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree5
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-13.9f, 0.0f, -8.8f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree6
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-20.0f, 0.0f, -10.9f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree7
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-13.8f, 0.0f, -0.5f);
+	pTree1->Draw();
+	glPopMatrix();
+
+	// Tree8
+	glPushMatrix();
+	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
+	glTranslatef(-9.9f, 0.0f, 10.7f);
+	pTree1->Draw();
+	glPopMatrix();
+
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//                               DESENHA OS OBJETOS DA CENA (FIM)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	fTimerPosY = pTimer->GetTime() / 1000.0f;
 	fRenderPosY += 0.2f;
 
-	// Impressï¿½o de texto na tela...
-	// Muda para modo de projeï¿½ï¿½o ortogonal 2D
-	// OBS: Desabilite Texturas e Iluminaï¿½ï¿½o antes de entrar nesse modo de projeï¿½ï¿½o
+	// Impressão de texto na tela...
+	// Muda para modo de projeção ortogonal 2D
+	// OBS: Desabilite Texturas e Iluminação antes de entrar nesse modo de projeção
 	OrthoMode(0, 0, WIDTH, HEIGHT);
 
 
@@ -347,18 +418,18 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	glRasterPos2f(10.0f, 40.0f);
 	pTexto->glPrint("Player LookAt  : %f, %f, %f", pCamera->Forward[0], pCamera->Forward[1], pCamera->Forward[2]);
 
-	//// Posiï¿½ï¿½o do Player
+	//// Posição do Player
 	glRasterPos2f(10.0f, 60.0f);
 	pTexto->glPrint("Player Position: %f, %f, %f", pCamera->Position[0], pCamera->Position[1], pCamera->Position[2]);
 
-	//// Imprime o FPS da aplicaï¿½ï¿½o e o Timer
+	//// Imprime o FPS da aplicação e o Timer
 	glRasterPos2f(10.0f, 80.0f);
 	pTexto->glPrint("Frames-per-Second: %d ---- Timer: %.1f segundos", iFPS, (pTimer->GetTime()/1000));
 
 
 	glPopMatrix();
 
-	// Muda para modo de projeï¿½ï¿½o perspectiva 3D
+	// Muda para modo de projeção perspectiva 3D
 	PerspectiveMode();
 
 	return true;
@@ -369,7 +440,7 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 
 void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 {
-	// Realiza os cï¿½lculos de rotaï¿½ï¿½o da visï¿½o do Player (atravï¿½s das coordenadas
+	// Realiza os cálculos de rotação da visão do Player (através das coordenadas
 	// X do mouse.
 	POINT mousePos;
 	int middleX = WIDTH >> 1;
@@ -384,7 +455,7 @@ void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 	fDeltaX = (float)((middleX - mousePos.x)) / 10;
 	fDeltaY = (float)((middleY - mousePos.y)) / 10;
 
-	// Rotaciona apenas a cï¿½mera
+	// Rotaciona apenas a câmera
 	pCamera->rotateGlob(-fDeltaX, 0.0f, 1.0f, 0.0f);
 	pCamera->rotateLoc(-fDeltaY, 1.0f, 0.0f, 0.0f);
 }
@@ -412,7 +483,7 @@ void CScene7::KeyPressed(void) // Tratamento de teclas pressionadas
 	{
 		pCamera->moveGlob(pCamera->Right[0], pCamera->Right[1], pCamera->Right[2]);
 	}
-	// Senï¿½o, interrompe movimento do Player
+	// Senão, interrompe movimento do Player
 	else
 	{
 	}
@@ -488,7 +559,7 @@ void CScene7::DrawCube(float pX, float pY, float pZ,
 	glTexCoord2d(1.0f, 1.0f); glVertex3f( 0.5f,  0.5f, 0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f,  0.5f, 0.5f);
 
-	// face trï¿½s
+	// face trás
 	glTexCoord2d(0.0f, 0.0f); glVertex3f(0.5f, -0.5f, -0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f, -0.5f, -0.5f);
 	glTexCoord2d(1.0f, 1.0f); glVertex3f(-0.5f, 0.5f, -0.5f);
