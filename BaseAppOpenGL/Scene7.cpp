@@ -14,7 +14,7 @@ CScene7::CScene7()
 	ulLastFPS = 0;
 	szTitle[256] = 0;
 
-	// Cria gerenciador de impressão de texto na tela
+	// Cria gerenciador de impressï¿½o de texto na tela
 	pTexto = new CTexto();
 
 	// Cria camera
@@ -31,17 +31,22 @@ CScene7::CScene7()
 	//pTextures = new CTexture();	
 
 
+	// Terrain
 	pTerrain = NULL;
 	pTerrain = new CModel_3DS();
 	pTerrain->Load("../Scene7/Objects/Terrain.3ds");
 
-	pFire = NULL;
-	pFire = new CModel_3DS();
-	pFire->Load("../Scene7/Objects/Fire.3ds");
 
-	pBrokenCar = NULL;
-	pBrokenCar = new CModel_3DS();
-	pBrokenCar->Load("../Scene7/Objects/BrokenCar.3ds");
+	// Fire
+	pFire1 = NULL;
+	pFire1 = new CModel_3DS();
+	pFire1->Load("../Scene7/Objects/Fire1.3ds");
+
+
+	// Cars
+	pCar1 = NULL;
+	pCar1 = new CModel_3DS();
+	pCar1->Load("../Scene7/Objects/Car1.3ds");
 }
 
 
@@ -71,29 +76,34 @@ CScene7::~CScene7(void)
 		pTimer = NULL;
 	}
 
+	// Terrain
 	if (pTerrain)
 	{
 		delete pTerrain;
 		pTerrain = NULL;
 	}
 
-	if (pFire)
+
+	// Fire
+	if (pFire1)
 	{
-		delete pFire;
-		pFire = NULL;
+		delete pFire1;
+		pFire1 = NULL;
 	}
 
-	if (pBrokenCar)
+
+	// Cars
+	if (pCar1)
 	{
-		delete pBrokenCar;
-		pBrokenCar = NULL;
+		delete pCar1;
+		pCar1 = NULL;
 	}
 }
 
 
 
 
-int CScene7::DrawGLScene(void)	// Função que desenha a cena
+int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 {
 	// Get FPS
 	if (GetTickCount() - ulLastFPS >= 1000)	// When A Second Has Passed...
@@ -110,7 +120,7 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	glLoadIdentity();									// Inicializa a Modelview Matrix Atual
 
 
-	// Seta as posições da câmera
+	// Seta as posiï¿½ï¿½es da cï¿½mera
 	pCamera->setView();
 
 	// Desenha grid 
@@ -119,45 +129,36 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	// Desenha os eixos do sistema cartesiano
 	DrawAxis();
 
-	// Modo FILL ou WIREFRAME (pressione barra de espaço)	
+	// Modo FILL ou WIREFRAME (pressione barra de espaï¿½o)	
 	if (bIsWireframe)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	else
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);	
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//                               DESENHA OS OBJETOS DA CENA (INÍCIO)
+	//                               DESENHA OS OBJETOS DA CENA (INï¿½CIO)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
 
 	// Terrain
 	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
+	glColor4f(0.5f, 1.0f, 1.0f, 1.0f);
 	pTerrain->Draw();
 	glPopMatrix();
 
+
 	// Fire
 	glPushMatrix();
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	pFire->Draw();
+	glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+	pFire1->Draw();
 	glPopMatrix();
 
-	// BrokenCar
+
+	// Car1
 	glPushMatrix();
-	glTranslatef(-1.0f, 0.0f, -1.0f);
-	glRotatef(45.0f, 0.0f, 1.0f, 0.0f);
-	pBrokenCar->Draw();
+	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+	pCar1->Draw();
 	glPopMatrix();
-
-
-
-
-
-
-
-	
-
 
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,9 +167,9 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	fTimerPosY = pTimer->GetTime() / 1000.0f;
 	fRenderPosY += 0.2f;
 
-	// Impressão de texto na tela...
-	// Muda para modo de projeção ortogonal 2D
-	// OBS: Desabilite Texturas e Iluminação antes de entrar nesse modo de projeção
+	// Impressï¿½o de texto na tela...
+	// Muda para modo de projeï¿½ï¿½o ortogonal 2D
+	// OBS: Desabilite Texturas e Iluminaï¿½ï¿½o antes de entrar nesse modo de projeï¿½ï¿½o
 	OrthoMode(0, 0, WIDTH, HEIGHT);
 
 
@@ -192,18 +193,18 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	glRasterPos2f(10.0f, 40.0f);
 	pTexto->glPrint("Player LookAt  : %f, %f, %f", pCamera->Forward[0], pCamera->Forward[1], pCamera->Forward[2]);
 
-	//// Posição do Player
+	//// Posiï¿½ï¿½o do Player
 	glRasterPos2f(10.0f, 60.0f);
 	pTexto->glPrint("Player Position: %f, %f, %f", pCamera->Position[0], pCamera->Position[1], pCamera->Position[2]);
 
-	//// Imprime o FPS da aplicação e o Timer
+	//// Imprime o FPS da aplicaï¿½ï¿½o e o Timer
 	glRasterPos2f(10.0f, 80.0f);
 	pTexto->glPrint("Frames-per-Second: %d ---- Timer: %.1f segundos", iFPS, (pTimer->GetTime()/1000));
 
 
 	glPopMatrix();
 
-	// Muda para modo de projeção perspectiva 3D
+	// Muda para modo de projeï¿½ï¿½o perspectiva 3D
 	PerspectiveMode();
 
 	return true;
@@ -214,7 +215,7 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 {
-	// Realiza os cálculos de rotação da visão do Player (através das coordenadas
+	// Realiza os cï¿½lculos de rotaï¿½ï¿½o da visï¿½o do Player (atravï¿½s das coordenadas
 	// X do mouse.
 	POINT mousePos;
 	int middleX = WIDTH >> 1;
@@ -229,7 +230,7 @@ void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 	fDeltaX = (float)((middleX - mousePos.x)) / 10;
 	fDeltaY = (float)((middleY - mousePos.y)) / 10;
 
-	// Rotaciona apenas a câmera
+	// Rotaciona apenas a cï¿½mera
 	pCamera->rotateGlob(-fDeltaX, 0.0f, 1.0f, 0.0f);
 	pCamera->rotateLoc(-fDeltaY, 1.0f, 0.0f, 0.0f);
 }
@@ -257,7 +258,7 @@ void CScene7::KeyPressed(void) // Tratamento de teclas pressionadas
 	{
 		pCamera->moveGlob(pCamera->Right[0], pCamera->Right[1], pCamera->Right[2]);
 	}
-	// Senão, interrompe movimento do Player
+	// Senï¿½o, interrompe movimento do Player
 	else
 	{
 	}
@@ -333,7 +334,7 @@ void CScene7::DrawCube(float pX, float pY, float pZ,
 	glTexCoord2d(1.0f, 1.0f); glVertex3f( 0.5f,  0.5f, 0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f,  0.5f, 0.5f);
 
-	// face trás
+	// face trï¿½s
 	glTexCoord2d(0.0f, 0.0f); glVertex3f(0.5f, -0.5f, -0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f, -0.5f, -0.5f);
 	glTexCoord2d(1.0f, 1.0f); glVertex3f(-0.5f, 0.5f, -0.5f);

@@ -18,7 +18,7 @@ public:
 	virtual void MouseMove(void);					// Tratamento de movimento do mouse
 	virtual void KeyPressed(void);					// Tratamento de teclas pressionadas
 	virtual void KeyDownPressed(WPARAM	wParam);	// Tratamento de teclas pressionadas
-	virtual int DrawGLScene(void);					// Função que desenha a cena
+	virtual int DrawGLScene(void);					// Funï¿½ï¿½o que desenha a cena
 
 	void Draw3DSGrid(float width, float length);
 	void DrawAxis();
@@ -36,9 +36,9 @@ private:
 	bool	fullscreen;		// Exibir janela em modo fullscreem (TRUE) ou em janela (FALSE)
 
 
-	CCamera* pCamera;	// Gerencia câmera OpenGL
-	float fDeltaY;				// Rotação da câmera OpenGL no eixo Y
-	float fDeltaX;				// Rotação da câmera OpenGL no eixo X
+	CCamera* pCamera;	// Gerencia cï¿½mera OpenGL
+	float fDeltaY;				// Rotaï¿½ï¿½o da cï¿½mera OpenGL no eixo Y
+	float fDeltaX;				// Rotaï¿½ï¿½o da cï¿½mera OpenGL no eixo X
 
 	CTexto* pTexto;	// Objeto que gerencia texto
 	CTexture* pTextures;	// Objeto que gerencia texturas
@@ -58,8 +58,13 @@ private:
 	float fTimerPosY;
 
 
+	// Terrain
 	CModel_3DS* pTerrain;
-	CModel_3DS* pFire;
-	CModel_3DS* pBrokenCar;
+
+	// Fire
+	CModel_3DS* pFire1;
+
+	// Cars
+	CModel_3DS* pCar1;
 };
 
