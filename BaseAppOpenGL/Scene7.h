@@ -75,5 +75,9 @@ private:
 	CModel_3DS* pBoxes3;
 	CModel_3DS* pBoxes4;
 	CModel_3DS* pBoxes5;
+
+	// Houses
+	CModel_3DS* pHouse1;
+	CModel_3DS* pHouse2;
 };
 

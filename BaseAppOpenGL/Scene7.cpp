@@ -77,6 +77,16 @@ CScene7::CScene7()
 	pBoxes5 = NULL;
 	pBoxes5 = new CModel_3DS();
 	pBoxes5->Load("../Scene7/Objects/Boxes5.3ds");
+
+
+	// Houses
+	pHouse1 = NULL;
+	pHouse1 = new CModel_3DS();
+	pHouse1->Load("../Scene7/Objects/House1.3ds");
+
+	pHouse2 = NULL;
+	pHouse2 = new CModel_3DS();
+	pHouse2->Load("../Scene7/Objects/House2.3ds");
 }
 
 
@@ -171,6 +181,20 @@ CScene7::~CScene7(void)
 	{
 		delete pBoxes5;
 		pBoxes5 = NULL;
+	}
+
+
+	// Houses
+	if (pHouse1)
+	{
+		delete pHouse1;
+		pHouse1 = NULL;
+	}
+
+	if (pHouse2)
+	{
+		delete pHouse2;
+		pHouse2 = NULL;
 	}
 }
 
@@ -278,6 +302,19 @@ int CScene7::DrawGLScene(void)	// Fun��o que desenha a cena
 	glPopMatrix();
 
 
+	// House1
+	glPushMatrix();
+	glColor4f(1.0f, 0.0f, 0.5f, 1.0f);
+	pHouse1->Draw();
+	glPopMatrix();
+
+	// House2
+	glPushMatrix();
+	glColor4f(0.0f, 0.5f, 0.5f, 1.0f);
+	pHouse2->Draw();
+	glPopMatrix();
+
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//                               DESENHA OS OBJETOS DA CENA (FIM)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
