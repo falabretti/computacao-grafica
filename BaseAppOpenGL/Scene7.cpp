@@ -47,6 +47,14 @@ CScene7::CScene7()
 	pCar1 = NULL;
 	pCar1 = new CModel_3DS();
 	pCar1->Load("../Scene7/Objects/Car1.3ds");
+
+	pCar2 = NULL;
+	pCar2 = new CModel_3DS();
+	pCar2->Load("../Scene7/Objects/Car2.3ds");
+
+	pCar3 = NULL;
+	pCar3 = new CModel_3DS();
+	pCar3->Load("../Scene7/Objects/Car3.3ds");
 }
 
 
@@ -97,6 +105,18 @@ CScene7::~CScene7(void)
 	{
 		delete pCar1;
 		pCar1 = NULL;
+	}
+
+	if (pCar2)
+	{
+		delete pCar2;
+		pCar2 = NULL;
+	}
+
+	if (pCar3)
+	{
+		delete pCar3;
+		pCar3 = NULL;
 	}
 }
 
@@ -160,6 +180,17 @@ int CScene7::DrawGLScene(void)	// Fun��o que desenha a cena
 	pCar1->Draw();
 	glPopMatrix();
 
+	// Car2
+	glPushMatrix();
+	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+	pCar2->Draw();
+	glPopMatrix();
+
+	// Car3
+	glPushMatrix();
+	glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
+	pCar3->Draw();
+	glPopMatrix();
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//                               DESENHA OS OBJETOS DA CENA (FIM)

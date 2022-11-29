@@ -66,5 +66,7 @@ private:
 
 	// Cars
 	CModel_3DS* pCar1;
+	CModel_3DS* pCar2;
+	CModel_3DS* pCar3;
 };
 
