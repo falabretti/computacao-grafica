@@ -28,6 +28,9 @@ public:
 		float sX = 1.0f, float sY = 1.0f, float sZ = 1.0f,
 		int texID = -1);
 
+	void CreateSkyBox(float x, float y, float z,
+		float width, float height, float length,
+		CTexture* pTextures);
 
 private:
 

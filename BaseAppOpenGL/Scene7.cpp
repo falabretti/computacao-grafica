@@ -14,7 +14,7 @@ CScene7::CScene7()
 	ulLastFPS = 0;
 	szTitle[256] = 0;
 
-	// Cria gerenciador de impressï¿½o de texto na tela
+	// Cria gerenciador de impressão de texto na tela
 	pTexto = new CTexto();
 
 	// Cria camera
@@ -28,7 +28,13 @@ CScene7::CScene7()
 	fRenderPosY = 0.0f;
 
 	// Carrega todas as texturas
-	//pTextures = new CTexture();	
+	pTextures = new CTexture();
+	pTextures->CreateTextureClamp(0, "../Scene7/Objects/front.bmp");
+	pTextures->CreateTextureClamp(1, "../Scene7/Objects/back.bmp");
+	pTextures->CreateTextureClamp(2, "../Scene7/Objects/down.bmp");
+	pTextures->CreateTextureClamp(3, "../Scene7/Objects/up.bmp");
+	pTextures->CreateTextureClamp(4, "../Scene7/Objects/left.bmp");
+	pTextures->CreateTextureClamp(5, "../Scene7/Objects/right.bmp");
 
 
 	// Terrain
@@ -215,7 +221,7 @@ CScene7::~CScene7(void)
 
 
 
-int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
+int CScene7::DrawGLScene(void)	// Função que desenha a cena
 {
 	// Get FPS
 	if (GetTickCount() - ulLastFPS >= 1000)	// When A Second Has Passed...
@@ -232,24 +238,30 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	glLoadIdentity();									// Inicializa a Modelview Matrix Atual
 
 
-	// Seta as posiï¿½ï¿½es da cï¿½mera
+	// Seta as posições da câmera
 	pCamera->setView();
 
 	// Desenha grid 
-	Draw3DSGrid(20.0f, 20.0f);
+	//Draw3DSGrid(20.0f, 20.0f);
 
 	// Desenha os eixos do sistema cartesiano
 	DrawAxis();
 
-	// Modo FILL ou WIREFRAME (pressione barra de espaï¿½o)	
+	// Modo FILL ou WIREFRAME (pressione barra de espaço)	
 	if (bIsWireframe)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	else
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);	
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//                               DESENHA OS OBJETOS DA CENA (INï¿½CIO)
+	//                               DESENHA OS OBJETOS DA CENA (INÍCIO)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	// Sky Box
+	CreateSkyBox(0.0f, 150.0f, 0.0f,
+		3000.0f, 3000.0f, 3000.0f,
+		pTextures);
 	
 
 	// Terrain
@@ -392,9 +404,9 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	fTimerPosY = pTimer->GetTime() / 1000.0f;
 	fRenderPosY += 0.2f;
 
-	// Impressï¿½o de texto na tela...
-	// Muda para modo de projeï¿½ï¿½o ortogonal 2D
-	// OBS: Desabilite Texturas e Iluminaï¿½ï¿½o antes de entrar nesse modo de projeï¿½ï¿½o
+	// Impressão de texto na tela...
+	// Muda para modo de projeção ortogonal 2D
+	// OBS: Desabilite Texturas e Iluminação antes de entrar nesse modo de projeção
 	OrthoMode(0, 0, WIDTH, HEIGHT);
 
 
@@ -418,18 +430,18 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 	glRasterPos2f(10.0f, 40.0f);
 	pTexto->glPrint("Player LookAt  : %f, %f, %f", pCamera->Forward[0], pCamera->Forward[1], pCamera->Forward[2]);
 
-	//// Posiï¿½ï¿½o do Player
+	//// Posição do Player
 	glRasterPos2f(10.0f, 60.0f);
 	pTexto->glPrint("Player Position: %f, %f, %f", pCamera->Position[0], pCamera->Position[1], pCamera->Position[2]);
 
-	//// Imprime o FPS da aplicaï¿½ï¿½o e o Timer
+	//// Imprime o FPS da aplicação e o Timer
 	glRasterPos2f(10.0f, 80.0f);
 	pTexto->glPrint("Frames-per-Second: %d ---- Timer: %.1f segundos", iFPS, (pTimer->GetTime()/1000));
 
 
 	glPopMatrix();
 
-	// Muda para modo de projeï¿½ï¿½o perspectiva 3D
+	// Muda para modo de projeção perspectiva 3D
 	PerspectiveMode();
 
 	return true;
@@ -440,7 +452,7 @@ int CScene7::DrawGLScene(void)	// Funï¿½ï¿½o que desenha a cena
 
 void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 {
-	// Realiza os cï¿½lculos de rotaï¿½ï¿½o da visï¿½o do Player (atravï¿½s das coordenadas
+	// Realiza os cálculos de rotação da visão do Player (através das coordenadas
 	// X do mouse.
 	POINT mousePos;
 	int middleX = WIDTH >> 1;
@@ -455,7 +467,7 @@ void CScene7::MouseMove(void) // Tratamento de movimento do mouse
 	fDeltaX = (float)((middleX - mousePos.x)) / 10;
 	fDeltaY = (float)((middleY - mousePos.y)) / 10;
 
-	// Rotaciona apenas a cï¿½mera
+	// Rotaciona apenas a câmera
 	pCamera->rotateGlob(-fDeltaX, 0.0f, 1.0f, 0.0f);
 	pCamera->rotateLoc(-fDeltaY, 1.0f, 0.0f, 0.0f);
 }
@@ -483,7 +495,7 @@ void CScene7::KeyPressed(void) // Tratamento de teclas pressionadas
 	{
 		pCamera->moveGlob(pCamera->Right[0], pCamera->Right[1], pCamera->Right[2]);
 	}
-	// Senï¿½o, interrompe movimento do Player
+	// Senão, interrompe movimento do Player
 	else
 	{
 	}
@@ -559,7 +571,7 @@ void CScene7::DrawCube(float pX, float pY, float pZ,
 	glTexCoord2d(1.0f, 1.0f); glVertex3f( 0.5f,  0.5f, 0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f,  0.5f, 0.5f);
 
-	// face trï¿½s
+	// face trás
 	glTexCoord2d(0.0f, 0.0f); glVertex3f(0.5f, -0.5f, -0.5f);
 	glTexCoord2d(0.0f, 1.0f); glVertex3f(-0.5f, -0.5f, -0.5f);
 	glTexCoord2d(1.0f, 1.0f); glVertex3f(-0.5f, 0.5f, -0.5f);
@@ -619,3 +631,89 @@ void CScene7::DrawAxis()
 }
 
 
+void CScene7::CreateSkyBox(float x, float y, float z,
+	float width, float height, float length,
+	CTexture* pTextures)
+{
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	glPushMatrix();
+
+	// Centraliza o Skybox em torno da posição especificada(x, y, z)
+	x = x - width / 2;
+	y = y - height / 2;
+	z = z - length / 2;
+
+
+	// Aplica a textura que representa a parte da frente do skybox (BACK map)
+	pTextures->ApplyTexture(0);
+
+	// Desenha face BACK do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y, z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x + width, y, z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x + width, y + height, z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y + height, z);
+	glEnd();
+
+
+	// Aplica a textura que representa a parte da frente do skybox (FRONT map)
+	pTextures->ApplyTexture(1);
+
+	// Desenha face FRONT do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x, y, z + length);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x, y + height, z + length);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y + height, z + length);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y, z + length);
+	glEnd();
+
+
+	// Aplica a textura que representa a parte da frente do skybox (DOWN map)
+	pTextures->ApplyTexture(2);
+
+	// Desenha face BOTTOM do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x, y, z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x, y, z + length);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y, z + length);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y, z);
+	glEnd();
+
+
+	// Aplica a textura que representa a parte da frente do skybox (UP map)
+	pTextures->ApplyTexture(3);
+
+	// Desenha face TOP do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x, y + height, z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y + height, z);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y + height, z + length);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x, y + height, z + length);
+	glEnd();
+
+
+	// Aplica a textura que representa a parte da frente do skybox (LEFT map)
+	pTextures->ApplyTexture(4);
+
+	// Desenha face LEFT do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x, y, z);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x, y + height, z);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x, y + height, z + length);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y, z + length);
+	glEnd();
+
+
+	// Aplica a textura que representa a parte da frente do skybox (RIGHT map)
+	pTextures->ApplyTexture(5);
+
+	// Desenha face RIGHT do cubo do skybox
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(x + width, y, z);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(x + width, y, z + length);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(x + width, y + height, z + length);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(x + width, y + height, z);
+	glEnd();
+
+	glPopMatrix();
+}
