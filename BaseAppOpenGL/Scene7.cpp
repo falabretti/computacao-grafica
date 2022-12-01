@@ -280,19 +280,19 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Car1
 	glPushMatrix();
-	glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar1->Draw();
 	glPopMatrix();
 
 	// Car2
 	glPushMatrix();
-	glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar2->Draw();
 	glPopMatrix();
 
 	// Car3
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar3->Draw();
 	glPopMatrix();
 
