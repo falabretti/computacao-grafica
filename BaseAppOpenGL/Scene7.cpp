@@ -336,7 +336,7 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// House2
 	glPushMatrix();
-	glColor4f(0.0f, 0.5f, 0.5f, 1.0f);
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pHouse2->Draw();
 	glPopMatrix();
 
