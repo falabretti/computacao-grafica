@@ -5,8 +5,7 @@
 #include "CTexto.h"
 #include "CCamera.h"
 #include "CModel_3DS.h"
-
-
+#include "AnimatedFire.h"
 
 class CScene7 : public CSceneBaseClass
 {
@@ -65,7 +64,7 @@ private:
 	CModel_3DS* pTerrain;
 
 	// Fire
-	CModel_3DS* pFire1;
+	AnimatedFire* pFire;
 
 	// Cars
 	CModel_3DS* pCar1;
@@ -86,4 +85,3 @@ private:
 	// Trees
 	CModel_3DS* pTree1;
 };
-

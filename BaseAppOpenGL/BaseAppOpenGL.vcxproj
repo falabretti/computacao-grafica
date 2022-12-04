@@ -89,6 +89,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedFire.cpp" />
+    <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CModel_3DS.cpp" />
     <ClCompile Include="CShaderManager.cpp" />
@@ -110,6 +112,7 @@
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedFire.h" />
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CModel_3DS.h" />
     <ClInclude Include="CShaderManager.h" />
@@ -118,6 +121,7 @@
     <ClInclude Include="CTexture.h" />
     <ClInclude Include="CTimer.h" />
     <ClInclude Include="Defines.h" />
+    <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Scene1.h" />

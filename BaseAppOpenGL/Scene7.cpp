@@ -44,9 +44,8 @@ CScene7::CScene7()
 
 
 	// Fire
-	pFire1 = NULL;
-	pFire1 = new CModel_3DS();
-	pFire1->Load("../Scene7/Objects/Fire1.3ds");
+	pFire = NULL;
+	pFire = new AnimatedFire("../Scene7/Objects/fire.png", 4, 4);
 
 
 	// Cars
@@ -98,7 +97,7 @@ CScene7::CScene7()
 	// Trees
 	pTree1 = NULL;
 	pTree1 = new CModel_3DS();
-	pTree1->Load("../Scene7/Objects/Tree1.3ds");
+	pTree1->Load("../Scene7/Objects/Tree1.3ds");	
 }
 
 
@@ -137,10 +136,10 @@ CScene7::~CScene7(void)
 
 
 	// Fire
-	if (pFire1)
+	if (pFire)
 	{
-		delete pFire1;
-		pFire1 = NULL;
+		delete pFire;
+		pFire = NULL;
 	}
 
 
@@ -273,8 +272,9 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Fire
 	glPushMatrix();
-	glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-	pFire1->Draw();
+	glTranslatef(2, 0, -2.4);
+	glScalef(0.3, 0.3, 0.3);
+	pFire->Draw();
 	glPopMatrix();
 
 

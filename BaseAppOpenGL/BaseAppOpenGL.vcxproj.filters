@@ -71,6 +71,12 @@
     <ClCompile Include="Scene7.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatedTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedFire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneBaseClass.h">
@@ -132,6 +138,12 @@
     </ClInclude>
     <ClInclude Include="Scene7.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedFire.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
