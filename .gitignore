@@ -413,7 +413,6 @@ FodyWeavers.xsd
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -429,6 +428,3 @@ FodyWeavers.xsd
 *.exe
 *.out
 *.app
-
-Scene5/GrassN.jpg
-Scene5/RockN.jpg
