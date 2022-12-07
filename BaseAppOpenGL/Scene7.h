@@ -84,4 +84,11 @@ private:
 
 	// Trees
 	CModel_3DS* pTree1;
+	CModel_3DS* pTree2;
+	CModel_3DS* pTree3;
+	CModel_3DS* pTree4;
+	CModel_3DS* pTree5;
+	CModel_3DS* pTree6;
+	CModel_3DS* pTree7;
+	CModel_3DS* pTree8;
 };

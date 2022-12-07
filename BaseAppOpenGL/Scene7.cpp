@@ -97,7 +97,35 @@ CScene7::CScene7()
 	// Trees
 	pTree1 = NULL;
 	pTree1 = new CModel_3DS();
-	pTree1->Load("../Scene7/Tree1.3ds");	
+	pTree1->Load("../Scene7/Tree1.3ds");
+
+	pTree2 = NULL;
+	pTree2 = new CModel_3DS();
+	pTree2->Load("../Scene7/Tree2.3ds");
+
+	pTree3 = NULL;
+	pTree3 = new CModel_3DS();
+	pTree3->Load("../Scene7/Tree3.3ds");
+
+	pTree4 = NULL;
+	pTree4 = new CModel_3DS();
+	pTree4->Load("../Scene7/Tree4.3ds");
+
+	pTree5 = NULL;
+	pTree5 = new CModel_3DS();
+	pTree5->Load("../Scene7/Tree5.3ds");
+
+	pTree6 = NULL;
+	pTree6 = new CModel_3DS();
+	pTree6->Load("../Scene7/Tree6.3ds");
+
+	pTree7 = NULL;
+	pTree7 = new CModel_3DS();
+	pTree7->Load("../Scene7/Tree7.3ds");
+
+	pTree8 = NULL;
+	pTree8 = new CModel_3DS();
+	pTree8->Load("../Scene7/Tree8.3ds");
 }
 
 
@@ -214,6 +242,48 @@ CScene7::~CScene7(void)
 	{
 		delete pTree1;
 		pTree1 = NULL;
+	}
+
+	if (pTree2)
+	{
+		delete pTree2;
+		pTree2 = NULL;
+	}
+
+	if (pTree3)
+	{
+		delete pTree3;
+		pTree3 = NULL;
+	}
+
+	if (pTree4)
+	{
+		delete pTree4;
+		pTree4 = NULL;
+	}
+
+	if (pTree5)
+	{
+		delete pTree5;
+		pTree5 = NULL;
+	}
+
+	if (pTree6)
+	{
+		delete pTree6;
+		pTree6 = NULL;
+	}
+
+	if (pTree7)
+	{
+		delete pTree7;
+		pTree7 = NULL;
+	}
+
+	if (pTree8)
+	{
+		delete pTree8;
+		pTree8 = NULL;
 	}
 }
 
@@ -335,50 +405,42 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	
 	// Tree1
 	glPushMatrix();
-	glTranslatef(9.5f, 0.0f, -2.6f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree2
 	glPushMatrix();
-	glTranslatef(-3.5f, 0.3f, -26.6f);
-	pTree1->Draw();
+	pTree2->Draw();
 	glPopMatrix();
 
 	// Tree3
 	glPushMatrix();
-	glTranslatef(-7.9f, 0.6f, -26.7f);
-	pTree1->Draw();
+	pTree3->Draw();
 	glPopMatrix();
 
 	// Tree4
 	glPushMatrix();
-	glTranslatef(-9.0f, 1.3f, -10.9f);
-	pTree1->Draw();
+	pTree4->Draw();
 	glPopMatrix();
 
 	// Tree5
 	glPushMatrix();
-	glTranslatef(-13.9f, 1.2f, -8.8f);
-	pTree1->Draw();
+	pTree5->Draw();
 	glPopMatrix();
 
 	// Tree6
 	glPushMatrix();
-	glTranslatef(-20.0f, 1.6f, -10.9f);
-	pTree1->Draw();
+	pTree6->Draw();
 	glPopMatrix();
 
 	// Tree7
 	glPushMatrix();
-	glTranslatef(-13.8f, 0.0f, -0.5f);
-	pTree1->Draw();
+	pTree7->Draw();
 	glPopMatrix();
 
 	// Tree8
 	glPushMatrix();
-	glTranslatef(-9.9f, 1.2f, 10.7f);
-	pTree1->Draw();
+	pTree8->Draw();
 	glPopMatrix();
 
 
