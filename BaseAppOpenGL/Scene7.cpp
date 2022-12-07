@@ -274,7 +274,7 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Fire
 	glPushMatrix();
-	glTranslatef(2, 0, -2.4);
+	glTranslatef(2, -0.6, -2.4);
 	glScalef(0.3, 0.3, 0.3);
 	pFire->Draw();
 	glPopMatrix();
@@ -341,31 +341,31 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Tree2
 	glPushMatrix();
-	glTranslatef(-3.5f, 0.0f, -26.6f);
+	glTranslatef(-3.5f, 0.3f, -26.6f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree3
 	glPushMatrix();
-	glTranslatef(-7.9f, 0.0f, -26.7f);
+	glTranslatef(-7.9f, 0.6f, -26.7f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree4
 	glPushMatrix();
-	glTranslatef(-9.0f, 0.0f, -10.9f);
+	glTranslatef(-9.0f, 1.3f, -10.9f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree5
 	glPushMatrix();
-	glTranslatef(-13.9f, 0.0f, -8.8f);
+	glTranslatef(-13.9f, 1.2f, -8.8f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree6
 	glPushMatrix();
-	glTranslatef(-20.0f, 0.0f, -10.9f);
+	glTranslatef(-20.0f, 1.6f, -10.9f);
 	pTree1->Draw();
 	glPopMatrix();
 
@@ -377,7 +377,7 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Tree8
 	glPushMatrix();
-	glTranslatef(-9.9f, 0.0f, 10.7f);
+	glTranslatef(-9.9f, 1.2f, 10.7f);
 	pTree1->Draw();
 	glPopMatrix();
 
