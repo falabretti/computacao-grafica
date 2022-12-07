@@ -257,6 +257,9 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
+
 	// Sky Box
 	CreateSkyBox(0.0f, 150.0f, 0.0f,
 		3000.0f, 3000.0f, 3000.0f,
@@ -265,7 +268,6 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Terrain
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pTerrain->Draw();
 	glPopMatrix();
 
@@ -280,119 +282,101 @@ int CScene7::DrawGLScene(void)	// Função que desenha a cena
 
 	// Car1
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar1->Draw();
 	glPopMatrix();
 
 	// Car2
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar2->Draw();
 	glPopMatrix();
 
 	// Car3
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pCar3->Draw();
 	glPopMatrix();
 
 
 	// Boxes1
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pBoxes1->Draw();
 	glPopMatrix();
 
 	// Boxes2
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pBoxes2->Draw();
 	glPopMatrix();
 
 	// Boxes3
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pBoxes3->Draw();
 	glPopMatrix();
 
 	// Boxes4
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pBoxes4->Draw();
 	glPopMatrix();
 
 	// Boxes5
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pBoxes5->Draw();
 	glPopMatrix();
 
 
 	// House1
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pHouse1->Draw();
 	glPopMatrix();
 
 	// House2
 	glPushMatrix();
-	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	pHouse2->Draw();
 	glPopMatrix();
 
 	
 	// Tree1
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(9.5f, 0.0f, -2.6f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree2
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-3.5f, 0.0f, -26.6f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree3
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-7.9f, 0.0f, -26.7f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree4
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-9.0f, 0.0f, -10.9f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree5
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-13.9f, 0.0f, -8.8f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree6
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-20.0f, 0.0f, -10.9f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree7
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-13.8f, 0.0f, -0.5f);
 	pTree1->Draw();
 	glPopMatrix();
 
 	// Tree8
 	glPushMatrix();
-	glColor4f(0.5f, 0.5f, 0.5f, 1.0f);
 	glTranslatef(-9.9f, 0.0f, 10.7f);
 	pTree1->Draw();
 	glPopMatrix();
