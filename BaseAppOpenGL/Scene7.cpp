@@ -29,75 +29,75 @@ CScene7::CScene7()
 
 	// Carrega todas as texturas
 	pTextures = new CTexture();
-	pTextures->CreateTextureClamp(0, "../Scene7/Objects/front.bmp");
-	pTextures->CreateTextureClamp(1, "../Scene7/Objects/back.bmp");
-	pTextures->CreateTextureClamp(2, "../Scene7/Objects/down.bmp");
-	pTextures->CreateTextureClamp(3, "../Scene7/Objects/up.bmp");
-	pTextures->CreateTextureClamp(4, "../Scene7/Objects/left.bmp");
-	pTextures->CreateTextureClamp(5, "../Scene7/Objects/right.bmp");
+	pTextures->CreateTextureClamp(0, "../Scene7/front.bmp");
+	pTextures->CreateTextureClamp(1, "../Scene7/back.bmp");
+	pTextures->CreateTextureClamp(2, "../Scene7/down.bmp");
+	pTextures->CreateTextureClamp(3, "../Scene7/up.bmp");
+	pTextures->CreateTextureClamp(4, "../Scene7/left.bmp");
+	pTextures->CreateTextureClamp(5, "../Scene7/right.bmp");
 
 
 	// Terrain
 	pTerrain = NULL;
 	pTerrain = new CModel_3DS();
-	pTerrain->Load("../Scene7/Objects/Terrain.3ds");
+	pTerrain->Load("../Scene7/Terrain.3ds");
 
 
 	// Fire
 	pFire = NULL;
-	pFire = new AnimatedFire("../Scene7/Objects/fire.png", 4, 4);
+	pFire = new AnimatedFire("../Scene7/fire.png", 4, 4);
 
 
 	// Cars
 	pCar1 = NULL;
 	pCar1 = new CModel_3DS();
-	pCar1->Load("../Scene7/Objects/Car1.3ds");
+	pCar1->Load("../Scene7/Car1.3ds");
 
 	pCar2 = NULL;
 	pCar2 = new CModel_3DS();
-	pCar2->Load("../Scene7/Objects/Car2.3ds");
+	pCar2->Load("../Scene7/Car2.3ds");
 
 	pCar3 = NULL;
 	pCar3 = new CModel_3DS();
-	pCar3->Load("../Scene7/Objects/Car3.3ds");
+	pCar3->Load("../Scene7/Car3.3ds");
 
 
 	// Boxes
 	pBoxes1 = NULL;
 	pBoxes1 = new CModel_3DS();
-	pBoxes1->Load("../Scene7/Objects/Boxes1.3ds");
+	pBoxes1->Load("../Scene7/Boxes1.3ds");
 
 	pBoxes2 = NULL;
 	pBoxes2 = new CModel_3DS();
-	pBoxes2->Load("../Scene7/Objects/Boxes2.3ds");
+	pBoxes2->Load("../Scene7/Boxes2.3ds");
 
 	pBoxes3 = NULL;
 	pBoxes3 = new CModel_3DS();
-	pBoxes3->Load("../Scene7/Objects/Boxes3.3ds");
+	pBoxes3->Load("../Scene7/Boxes3.3ds");
 
 	pBoxes4 = NULL;
 	pBoxes4 = new CModel_3DS();
-	pBoxes4->Load("../Scene7/Objects/Boxes4.3ds");
+	pBoxes4->Load("../Scene7/Boxes4.3ds");
 
 	pBoxes5 = NULL;
 	pBoxes5 = new CModel_3DS();
-	pBoxes5->Load("../Scene7/Objects/Boxes5.3ds");
+	pBoxes5->Load("../Scene7/Boxes5.3ds");
 
 
 	// Houses
 	pHouse1 = NULL;
 	pHouse1 = new CModel_3DS();
-	pHouse1->Load("../Scene7/Objects/House1.3ds");
+	pHouse1->Load("../Scene7/House1.3ds");
 
 	pHouse2 = NULL;
 	pHouse2 = new CModel_3DS();
-	pHouse2->Load("../Scene7/Objects/House2.3ds");
+	pHouse2->Load("../Scene7/House2.3ds");
 
 
 	// Trees
 	pTree1 = NULL;
 	pTree1 = new CModel_3DS();
-	pTree1->Load("../Scene7/Objects/Tree1.3ds");	
+	pTree1->Load("../Scene7/Tree1.3ds");	
 }
 
 
